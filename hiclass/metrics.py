@@ -235,6 +235,8 @@ def f1(y_true: np.ndarray, y_pred: np.ndarray, average: str = "micro"):
 def _f_score_micro(y_true: np.ndarray, y_pred: np.ndarray):
     prec = precision(y_true, y_pred)
     rec = recall(y_true, y_pred)
+    if prec + rec == 0:
+        return 0
     return 2 * prec * rec / (prec + rec)
 
 
